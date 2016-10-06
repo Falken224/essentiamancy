@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "essentiamancy",
+  "name": "Essentiamancy",
+  "description": "Essentiamancy - Magically changing the very nature of your minecraft world.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Falken224"],
+  "credits": "The Forge and FML guys, for making this example.  And Falken for his inspired work of genius, bringing this mod to all his adoring fans!",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
