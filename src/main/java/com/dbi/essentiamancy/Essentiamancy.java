@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -18,7 +17,7 @@ public class Essentiamancy {
     public static final String MODID = "essentiamancy";
     public static final String VERSION = "0.1alpha";
 
-    public static final Item ESSENTIA_WAND=new EssentiaWand();
+    public static final Item ITEM_ESSENTIA_WAND =new EssentiaWand();
 
     @SidedProxy(clientSide = "com.dbi.essentiamancy.proxy.ClientProxy", serverSide = "com.dbi.essentiamancy.proxy.proxy.ServerProxy")
     public static Proxy proxy;
@@ -31,11 +30,11 @@ public class Essentiamancy {
     }
 
     private void registerBlocks() {
-        GameRegistry.register(ESSENTIA_WAND);
+        GameRegistry.register(ITEM_ESSENTIA_WAND);
     }
 
     private void registerRecipes()
     {
-        GameRegistry.addRecipe(new ItemStack(ESSENTIA_WAND),"  B"," A ","A  ",'A', Items.STICK,'B',Blocks.GLASS);
+        GameRegistry.addRecipe(new ItemStack(ITEM_ESSENTIA_WAND),"  B"," A ","A  ",'A', Items.STICK,'B',Blocks.GLASS);
     }
 }
