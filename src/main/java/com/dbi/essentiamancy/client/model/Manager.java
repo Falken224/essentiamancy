@@ -1,5 +1,6 @@
 package com.dbi.essentiamancy.client.model;
 
+import com.dbi.essentiamancy.Essentiamancy;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -19,7 +20,12 @@ public class Manager {
     private Manager() {
     }
 
-    public void registerItemModel(Item item) {
+    public void registerModels()
+    {
+        registerItemModel(Essentiamancy.ITEM_ESSENTIA_WAND);
+    }
+
+    private void registerItemModel(Item item) {
         final ModelResourceLocation fullModelLocation = new ModelResourceLocation(item.getRegistryName().toString(), "inventory");
         ModelBakery.registerItemVariants(item, fullModelLocation); // Ensure the custom model is loaded and prevent the default model from being loaded
         ModelLoader.setCustomMeshDefinition(item, new ItemMeshDefinition() {

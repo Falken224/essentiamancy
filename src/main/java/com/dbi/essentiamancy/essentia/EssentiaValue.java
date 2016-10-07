@@ -5,9 +5,9 @@ package com.dbi.essentiamancy.essentia;
  */
 public class EssentiaValue {
     private EssentiaType type;
-    private short value;
+    private int value;
 
-    public EssentiaValue(EssentiaType type,short value)
+    public EssentiaValue(EssentiaType type,int value)
     {
         assert 0<=value && value<=7 : "Value "+value+" is out of bounds for an essentia value.";
         this.type=type;
@@ -18,7 +18,7 @@ public class EssentiaValue {
         return type;
     }
 
-    public short getValue() {
+    public int getValue() {
         return value;
     }
 }

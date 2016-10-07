@@ -16,11 +16,11 @@ public class EssentiaSignature {
         this.essentiaSignature=signature;
         for(EssentiaFlavor flavor : EssentiaFlavor.values())
         {
-            short value=Short.parseShort("0x"+sig[flavor.ordinal()]);
+            int value=Integer.parseInt(""+signature.charAt(flavor.ordinal()),16);//read it as base 16
             value-=8;
             sig[flavor.ordinal()]=
                 (value<=0)?
-                    new EssentiaValue(flavor.minType(),(short)(value*-1)):
+                    new EssentiaValue(flavor.minType(),value*-1):
                     new EssentiaValue(flavor.maxType(),value);
         }
     }
@@ -29,5 +29,10 @@ public class EssentiaSignature {
     {
         if(flavor==null) return null;
         return sig[flavor.ordinal()];
+    }
+
+    @Override
+    public String toString() {
+        return "essentiaSig:"+essentiaSignature;
     }
 }

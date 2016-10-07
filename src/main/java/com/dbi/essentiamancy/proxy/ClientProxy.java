@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ClientProxy implements Proxy {
     @Override
     public void preInit() {
-        Manager.INSTANCE.registerItemModel(Essentiamancy.ITEM_ESSENTIA_WAND);
+        Manager.INSTANCE.registerModels();
     }
 
     @Override

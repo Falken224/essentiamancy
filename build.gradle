@@ -59,6 +59,9 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+    testCompile "org.testng:testng:6.9.10"
+    testCompile "org.hamcrest:hamcrest-all:1.3"
+
 }
 
 processResources
