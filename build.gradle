@@ -24,6 +24,9 @@ version = "0.1alpha"
 group= "com.dbi.essentiamancy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "essentiamancy"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 minecraft {
     version = "1.10.2-12.18.1.2011"
     runDir = "run"
