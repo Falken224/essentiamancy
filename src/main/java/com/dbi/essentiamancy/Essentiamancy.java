@@ -1,5 +1,6 @@
 package com.dbi.essentiamancy;
 
+import com.dbi.essentiamancy.client.model.HUDRenderer;
 import com.dbi.essentiamancy.essentia.EssentiaSignature;
 import com.dbi.essentiamancy.essentia.EssentiaSignatureRegistry;
 import com.dbi.essentiamancy.items.EssentiaWand;
@@ -10,10 +11,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.registry.IRegistry;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
@@ -40,7 +43,12 @@ public class Essentiamancy {
     public void init(FMLInitializationEvent event)
     {
         EssentiaSignatureRegistry.INSTANCE.logBlocksWithoutSigs();
+    }
 
+    @EventHandler
+    public void init(FMLPostInitializationEvent event)
+    {
+        MinecraftForge.EVENT_BUS.register(new HUDRenderer());
     }
 
     private void registerBlocks() {
