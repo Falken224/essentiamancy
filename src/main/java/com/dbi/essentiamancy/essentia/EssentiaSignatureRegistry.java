@@ -1,8 +1,12 @@
 package com.dbi.essentiamancy.essentia;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +29,19 @@ public class EssentiaSignatureRegistry
 
     private Map<Block,EssentiaSignature> blockSignatureRegistry = new HashMap<>();
     private Configuration config;
+
+    public EssentiaSignature findSignature(RayTraceResult rtr, World world)
+    {
+        BlockPos pos = rtr.getBlockPos();
+        return findSignature(world.getBlockState(pos).getBlock());
+    }
+
+    public EssentiaSignature findSignature(Block block)
+    {
+        if(blockSignatureRegistry.containsKey(block))
+            return blockSignatureRegistry.get(block);
+        return null;
+    }
 
     public void loadFromConfig(File configFile)
     {

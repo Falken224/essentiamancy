@@ -3,6 +3,7 @@ package com.dbi.essentiamancy;
 import com.dbi.essentiamancy.client.model.HUDRenderer;
 import com.dbi.essentiamancy.essentia.EssentiaSignature;
 import com.dbi.essentiamancy.essentia.EssentiaSignatureRegistry;
+import com.dbi.essentiamancy.event.WandVisionToggle;
 import com.dbi.essentiamancy.items.EssentiaWand;
 import com.dbi.essentiamancy.proxy.Proxy;
 import net.minecraft.block.Block;
@@ -20,6 +21,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.IForgeRegistry;
+import org.apache.logging.log4j.LogManager;
 
 @Mod(modid = Essentiamancy.MODID, version = Essentiamancy.VERSION)
 public class Essentiamancy {
@@ -46,9 +48,10 @@ public class Essentiamancy {
     }
 
     @EventHandler
-    public void init(FMLPostInitializationEvent event)
+    public void postInit(FMLPostInitializationEvent event)
     {
         MinecraftForge.EVENT_BUS.register(new HUDRenderer());
+        MinecraftForge.EVENT_BUS.register(GameState.INSTANCE);
     }
 
     private void registerBlocks() {
@@ -59,4 +62,5 @@ public class Essentiamancy {
     {
         GameRegistry.addRecipe(new ItemStack(ITEM_ESSENTIA_WAND),"  B"," A ","A  ",'A', Items.STICK,'B',Blocks.GLASS);
     }
+
 }

@@ -67,6 +67,18 @@ dependencies {
 
 }
 
+task setupMinecraft {
+    copy {
+        from(sourceSets.main.resources.srcDirs) {
+            include 'essentiamancy.cfg'
+        }
+        into(file('run/config'))
+    }
+}
+
+tasks.runClient.dependsOn(setupMinecraft)
+tasks.runServer.dependsOn(setupMinecraft)
+
 processResources
 {
     // this will ensure that this task is redone when the versions change.
@@ -83,6 +95,10 @@ processResources
         
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+        exclude 'mcmod.info','essentiamancy.cfg'
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'essentiamancy'
     }
 }
