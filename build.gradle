@@ -24,6 +24,9 @@ version = "0.1alpha"
 group= "com.dbi.essentiamancy" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "essentiamancy"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 minecraft {
     version = "1.10.2-12.18.1.2011"
     runDir = "run"
@@ -64,6 +67,18 @@ dependencies {
 
 }
 
+task setupMinecraft {
+    copy {
+        from(sourceSets.main.resources.srcDirs) {
+            include 'essentiamancy.cfg'
+        }
+        into(file('run/config'))
+    }
+}
+
+tasks.runClient.dependsOn(setupMinecraft)
+tasks.runServer.dependsOn(setupMinecraft)
+
 processResources
 {
     // this will ensure that this task is redone when the versions change.
@@ -80,6 +95,10 @@ processResources
         
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+        exclude 'mcmod.info','essentiamancy.cfg'
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'essentiamancy'
     }
 }
